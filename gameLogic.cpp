@@ -55,13 +55,13 @@ bool Bord::bordFilles(){
 ////////////////////////////////////GAME_LOGIC/////////////////////////////
 
 game::game():x(START_X),y(START_Y),point(0){
-	blocks.push_back(std::make_shared<I_block>());
-	blocks.push_back(std::make_shared<x2_block>());
-	blocks.push_back(std::make_shared<T_block>());
-	blocks.push_back(std::make_shared<L_block>());
-	blocks.push_back(std::make_shared<J_block>());
-	blocks.push_back(std::make_shared<S_block>());
-	blocks.push_back(std::make_shared<Z_block>());
+	blocks.push_back(new I_block());
+	blocks.push_back(new x2_block());
+	blocks.push_back(new T_block());
+	blocks.push_back(new L_block());
+	blocks.push_back(new J_block());
+	blocks.push_back(new S_block());
+	blocks.push_back(new Z_block());
 
 	TimePoint  moveStartTime = std::chrono::steady_clock::now();
 }
@@ -281,7 +281,9 @@ bool game::blockMoveDelay() {
 }
 
 game::~game(){
-	while(blocks.empty()){
-		
+	for(auto el : blocks){
+		delete el;
+		el = nullptr;
 	}
+
 }

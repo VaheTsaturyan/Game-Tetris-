@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <chrono>
 #include <vector>
-#include <memory>
+//#include <memory>
 
 
 #include "block.h"
@@ -78,9 +78,9 @@ private:
 
 private:
 	Bord bordGame;
-	std::vector<std::shared_ptr<block>> blocks;
+	std::vector<block*> blocks;
 	//std::vector<int> chemps;
-	std::shared_ptr<block> figur;
+	block* figur;
 	size x;
 	size y;
 	int point;
